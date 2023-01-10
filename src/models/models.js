@@ -34,16 +34,9 @@ const Users = sequelize.define('User', {
         unique: true
     },
 
-    phone: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
-        unique: true
-    },
-
-    address: {
+    picture: {
         type: DataTypes.STRING(100),
-        allowNull: false,
-        unique: false
+        allowNull: true,
     }
 });
 

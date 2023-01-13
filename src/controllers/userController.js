@@ -1,10 +1,9 @@
 const { Users } = require('../models/models');
-const ResponseModel = require('../../utilities/responseModel');
-const TokenHandlers = require('../../utilities/tokenHandlers');
+const ResponseModel = require('../utils/responseModel');
 
 // Get user profile
-getUserProfile = async (req, res) => {
-    console.log(req.user);
+const getUserProfile = async (req, res) => {
+    // console.log(req.user);
     try {
         const Profile = await Users.findOne(
             {

@@ -26,7 +26,7 @@ const getAllProducts = async (req, res) => {
         else if (req.query.sort == 'desc') {
             var filter = { order: [['price', 'DESC']] }
         }
-        else if(req.query.min && req.query.max)  
+        if(req.query.min && req.query.max && req.query.sort)  
         {
          var filter  = {
            where: {
@@ -34,27 +34,30 @@ const getAllProducts = async (req, res) => {
                   [Op.gte]: req.query.min,
                   [Op.lte]: req.query.max,
                 }
-              }
+              },
+              order: [['price', req.query.sort]]
             }
         }  
-        else if(req.query.min)  
+        else if(req.query.min && req.query.sort)  
         {
          var filter  = {
            where: {
                 price: {
                   [Op.gte]: req.query.min
                 }
-              }
+              },
+              order: [['price', req.query.sort]]
             }
         }
-        else if(req.query.max)  
+        else if(req.query.max && req.query.sort)  
         {
          var filter  = {
            where: {
                 price: {
                   [Op.lte]: req.query.max
                 }
-              }
+              },
+              order: [['price', req.query.sort]]
             }
         }  
     }

@@ -3,7 +3,7 @@ const ResponseModel = require('../utils/responseModel');
 
 // Get user profile
 const getUserProfile = async (req, res) => {
-    // console.log(req.user);
+
     try {
         const Profile = await Users.findOne(
             {

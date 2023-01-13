@@ -1,4 +1,4 @@
-//const ResponseModel = require('../utilities/responseModel');
+
 const { Users } = require('../models/models');
 
 const ResponseModel = require('../utils/responseModel');
@@ -47,8 +47,7 @@ module.exports = async (req, res, next) => {
                     },
                         { where: { email: payload.email } })
                 }
-                // // console.log(user);
-                // return res.json(new ResponseModel(user));
+               
             }
             catch (err) {
                 // console.log(err);

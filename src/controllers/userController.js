@@ -1,21 +1,16 @@
-const { Users } = require('../models/models');
-const ResponseModel = require('../utils/responseModel');
+const { Users } = require("../models/models");
+const ResponseModel = require("../utils/responseModel");
 
 // Get user profile
 const getUserProfile = async (req, res) => {
+  try {
+    const Profile = await Users.findOne({
+      where: { id: req.user.id },
+    });
+    res.json(new ResponseModel(Profile));
+  } catch (err) {
+    res.send(err);
+  }
+};
 
-    try {
-        const Profile = await Users.findOne(
-            {
-                where:
-                    { id: req.user.id }
-            });
-        res.json(new ResponseModel(Profile));
-    }
-    catch (err) {
-        res.send(err);
-    }
-}
-
-
-module.exports = { getUserProfile }
+module.exports = { getUserProfile };
